@@ -11,6 +11,8 @@ class MovieDetailHeader extends StatelessWidget {
       return Padding(
         padding: const EdgeInsets.only(right: 8.0),
         child: Chip(
+          shadowColor: Colors.black,
+          elevation: 15,
           label: Text(category),
           backgroundColor: Colors.black12,
         ),
@@ -33,15 +35,20 @@ class MovieDetailHeader extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Material(
-                color: Colors.red,
-                borderRadius: BorderRadius.circular(30.0),
-                elevation: 2.0,
-                child: Image.network(
-                  movie.posterUrl,
-                  fit: BoxFit.fill,
-                  width: 0.8 * 180,
-                  height: 180,
+              Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                elevation: 20,
+                shadowColor: Colors.grey,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image.network(
+                    movie.posterUrl,
+                    fit: BoxFit.fill,
+                    width: 0.8 * 180,
+                    height: 180,
+                  ),
                 ),
               ),
               Column(
@@ -57,13 +64,26 @@ class MovieDetailHeader extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 8.0),
-                  Text(
-                    movie.rating.toString(),
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.red,
-                    ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: <Widget>[
+                      Text(
+                        movie.rating.toString(),
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).accentColor,
+                        ),
+                      ),
+                      Text(
+                        '/10',
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).accentColor,
+                        ),
+                      ),
+                    ],
                   ),
                   SizedBox(height: 4.0),
                   Text(

@@ -10,13 +10,20 @@ class PhotoScroller extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.only(right: 16.0),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(4.0),
-        child: Image.network(
-          photo,
-          width: 160.0,
-          height: 120.0,
-          fit: BoxFit.cover,
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        elevation: 5,
+        shadowColor: Colors.grey,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(10.0),
+          child: Image.network(
+            photo,
+            width: 160.0,
+            height: 120.0,
+            fit: BoxFit.cover,
+          ),
         ),
       ),
     );

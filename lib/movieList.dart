@@ -4,8 +4,7 @@ final List<Movie> testMovie = [
   Movie(
     bannerUrl:
         'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQouTuRSIKXmVmNsmXM7fFdfe4v90wt66fPUQ&usqp=CAU',
-    posterUrl:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRGHKTEr3dv1a8ukX1NqS4LvS_257ZeVsk6VQ&usqp=CAU',
+    posterUrl: 'https://www.joblo.com/newsimages1/venom-poster-6-913.jpg',
     title: 'Venom',
     rating: 9.0,
     starRating: 4,

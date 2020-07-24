@@ -37,16 +37,16 @@ class MovieDetailHeader extends StatelessWidget {
             children: [
               Card(
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(10),
                 ),
                 elevation: 20,
                 shadowColor: Colors.grey,
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(10),
                   child: Image.network(
                     movie.posterUrl,
                     fit: BoxFit.fill,
-                    width: 0.8 * 180,
+                    width: 0.7 * 180,
                     height: 180,
                   ),
                 ),
@@ -55,7 +55,7 @@ class MovieDetailHeader extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 40.0),
+                  SizedBox(height: 50.0),
                   Text(
                     movie.title,
                     style: TextStyle(
@@ -65,29 +65,51 @@ class MovieDetailHeader extends StatelessWidget {
                   ),
                   SizedBox(height: 8.0),
                   Row(
-                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Text(
-                        movie.rating.toString(),
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Theme.of(context).accentColor,
-                        ),
+                      Column(
+                        children: <Widget>[
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: <Widget>[
+                              Text(
+                                movie.rating.toString(),
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Theme.of(context).accentColor,
+                                ),
+                              ),
+                              Text(
+                                '/10',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                  color: Theme.of(context).accentColor,
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 4.0),
+                          Text(
+                            'Ratings',
+                          ),
+                        ],
                       ),
-                      Text(
-                        '/10',
-                        style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                          color: Theme.of(context).accentColor,
-                        ),
+                      SizedBox(width: 16.0),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          FlatButton.icon(
+                            label: Text('Add to Fav'),
+                            icon: Icon(Icons.favorite_border),
+                            onPressed: () {},
+                          ),
+                          
+                        ],
                       ),
                     ],
-                  ),
-                  SizedBox(height: 4.0),
-                  Text(
-                    'Ratings',
                   ),
                   SizedBox(height: 5.0),
                   Row(

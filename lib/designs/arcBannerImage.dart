@@ -1,21 +1,42 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class ArcBannerImage extends StatelessWidget {
   final String imageUrl;
   ArcBannerImage(this.imageUrl);
-  
+
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
 
-    return ClipPath(
-      clipper: ArcClipper(),
-      child: Image.network(
-        imageUrl,
-        width: screenWidth,
-        height: 230.0,
-        fit: BoxFit.cover,
-      ),
+    return Stack(
+      children: [
+        ClipPath(
+          clipper: ArcClipper(),
+          child: Hero(
+            tag: 'moviePoster',
+            child: Image.network(
+              imageUrl,
+              width: screenWidth,
+              height: 230.0,
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        Positioned(
+          top: 10,
+          bottom: 150,
+          left: 30,
+          right: 100,
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
+            child: Container(
+              color: Colors.black.withOpacity(0),
+            ),
+          ),
+        )
+      ],
     );
   }
 }

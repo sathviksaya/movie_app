@@ -56,11 +56,16 @@ class MovieDetailHeader extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 50.0),
-                  Text(
-                    movie.title,
-                    style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
+                  FittedBox(
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.55,
+                      child: Text(
+                        movie.title,
+                        style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                   ),
                   SizedBox(height: 8.0),
@@ -106,7 +111,6 @@ class MovieDetailHeader extends StatelessWidget {
                             icon: Icon(Icons.favorite_border),
                             onPressed: () {},
                           ),
-                          
                         ],
                       ),
                     ],

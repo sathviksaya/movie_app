@@ -1,5 +1,6 @@
 class Movie {
   Movie({
+    this.id,
     this.bannerUrl,
     this.posterUrl,
     this.title,
@@ -11,6 +12,7 @@ class Movie {
     this.actors,
   });
 
+  final int id;
   final String bannerUrl;
   final String posterUrl;
   final String title;

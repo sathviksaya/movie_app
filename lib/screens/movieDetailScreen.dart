@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/models/movie.dart';
 
-import '../designs/fadeAnimation.dart';
+import '../Animations/fadeAnimationFromBottom.dart';
 import '../widgets/actorScroller.dart';
 import '../widgets/movieDetailHeader.dart';
 import '../widgets/photoScroller.dart';
 import '../widgets/storyLine.dart';
 
 class MovieDetailScreen extends StatelessWidget {
+  static const routeName = '/movieDetailScreen';
   final Movie movie;
-  MovieDetailScreen(this.movie);
+  MovieDetailScreen({this.movie});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +18,7 @@ class MovieDetailScreen extends StatelessWidget {
         child: Column(
           children: <Widget>[
             MovieDetailHeader(movie),
-            FadeAnimation(
+            FadeAnimationFromBottom(
               2,
               Padding(
                 padding: const EdgeInsets.symmetric(
@@ -27,15 +28,18 @@ class MovieDetailScreen extends StatelessWidget {
                 child: StoryLine(movie),
               ),
             ),
-            FadeAnimation(
+            FadeAnimationFromBottom(
               2,
               PhotoScroller(movie),
             ),
             SizedBox(height: 20.0),
-            Divider(
-              thickness: 3,
+            FadeAnimationFromBottom(
+              2,
+              Divider(
+                thickness: 3,
+              ),
             ),
-            FadeAnimation(
+            FadeAnimationFromBottom(
               2,
               ActorScroller(movie),
             ),

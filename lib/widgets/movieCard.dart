@@ -1,60 +1,86 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/screens/movieDetailScreen.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:random_color/random_color.dart';
 import '../models/movie.dart';
 
 class MovieCard extends StatelessWidget {
   final Movie movie;
   MovieCard(this.movie);
 
-  List<Widget> _buildCategoryChips() {
-    return movie.categories.map((category) {
-      return Padding(
-        padding: const EdgeInsets.only(right: 8.0),
-        child: Chip(
-          elevation: 2,
-          label: Text(category),
-        ),
-      );
-    }).toList();
+  Widget _buildCategoryChips() {
+    return ListView.builder(
+      scrollDirection: Axis.horizontal,
+      itemCount: movie.categories.length,
+      itemBuilder: (ctx, index) {
+        return Container(
+          margin: EdgeInsets.all(5),
+          child: Chip(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(6),
+            ),
+            backgroundColor: RandomColor().randomColor(
+                colorHue: ColorHue.red,
+                colorBrightness: ColorBrightness.light,
+                colorSaturation: ColorSaturation.highSaturation),
+            label: Text(
+              movie.categories[index],
+            ),
+          ),
+        );
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => MovieDetailScreen(movie),
+        Navigator.push(
+          context,
+          PageTransition(
+            type: PageTransitionType.fade,
+            child: MovieDetailScreen(
+              movie: movie,
+            ),
           ),
         );
       },
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+        padding: EdgeInsets.symmetric(horizontal: 20),
         child: Stack(
           overflow: Overflow.visible,
           fit: StackFit.passthrough,
           children: [
             Card(
-              margin: EdgeInsets.fromLTRB(35, 40, 5, 10),
+              margin: EdgeInsets.fromLTRB(15, 20, 0, 10),
               elevation: 5,
               shadowColor: Colors.grey,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
               child: ListTile(
-                leading: SizedBox(),
+                leading: SizedBox(
+                  width: 60,
+                ),
                 title: Text(
                   movie.title,
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 subtitle: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    Row(
-                      children: _buildCategoryChips(),
+                    Container(
+                      height: 40,
+                      child: _buildCategoryChips(),
                     ),
-                    Row(
-                      children: _buildCategoryChips(),
+                    Text(
+                      movie.storyline,
+                      maxLines: 5,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    SizedBox(
+                      height: 5,
                     ),
                   ],
                 ),
@@ -73,14 +99,11 @@ class MovieCard extends StatelessWidget {
               left: -10,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
-                child: Hero(
-                  tag: 'moviePoster',
-                  child: Image.network(
-                    movie.posterUrl,
-                    fit: BoxFit.fill,
-                    width: 0.7 * 150,
-                    height: 150,
-                  ),
+                child: Image.network(
+                  movie.posterUrl,
+                  fit: BoxFit.fill,
+                  width: 0.7 * 150,
+                  height: 150,
                 ),
               ),
             ),

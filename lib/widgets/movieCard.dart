@@ -20,9 +20,8 @@ class MovieCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(6),
             ),
             backgroundColor: RandomColor().randomColor(
-                colorHue: ColorHue.red,
                 colorBrightness: ColorBrightness.light,
-                colorSaturation: ColorSaturation.highSaturation),
+                colorSaturation: ColorSaturation.lowSaturation),
             label: Text(
               movie.categories[index],
             ),
@@ -74,13 +73,23 @@ class MovieCard extends StatelessWidget {
                       height: 40,
                       child: _buildCategoryChips(),
                     ),
-                    Text(
-                      movie.storyline,
-                      maxLines: 5,
-                      overflow: TextOverflow.ellipsis,
+                    SizedBox(
+                      height: 20,
+                    ),
+                    FlatButton.icon(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      color: Color(0xfff2994a),
+                      onPressed: () {},
+                      label: Text('Add to Favourites'),
+                      icon: Icon(
+                        Icons.favorite,
+                        color: Colors.red,
+                      ),
                     ),
                     SizedBox(
-                      height: 5,
+                      height: 10,
                     ),
                   ],
                 ),

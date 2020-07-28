@@ -29,6 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     List<String> _genres = [
+      'All',
       'Action',
       'Horror',
       'Thriller',

@@ -3,10 +3,10 @@
 
 ## Submitted by : ICONWizs
 
-**Team Member:**
+**Team Members:**
 
--- Sathvik Saaya <br>
--- Vishnu Anand
+-- Sathvik Saaya, Flutter Genius <br>
+-- Vishnu Anand, UI Designer
 
 ![](UI_Design/FlixListMockupPoster.jpg)
 

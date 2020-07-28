@@ -1,4 +1,3 @@
-![](UI_Design/FlixListMockupPoster.jpg)
 
 #App Name: FlixList
 
@@ -8,6 +7,8 @@
 
 -- Sathvik Saaya <br>
 -- Vishnu Anand
+
+![](UI_Design/FlixListMockupPoster.jpg)
 
 ### IDEA or Problem Statement:
 

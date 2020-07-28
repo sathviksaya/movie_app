@@ -27,7 +27,7 @@ Figma, Visual Studio Code.
 
 #### Design explaination:
 
---Theme
+--Theme <br>
 We wanted to make the user feel right at home with our app. So we used a Red shades as our primary colour. 
 Based on the netflix philosophy of colour science, users can instantly relate the app to a cinema or a movie theater because of the red accents.
 

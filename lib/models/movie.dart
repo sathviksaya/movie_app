@@ -7,6 +7,7 @@ class Movie {
     this.rating,
     this.starRating,
     this.categories,
+    this.reviews,
     this.storyline,
     this.photoUrls,
     this.actors,
@@ -16,6 +17,7 @@ class Movie {
   final String bannerUrl;
   final String posterUrl;
   final String title;
+  final List<String> reviews;
   final double rating;
   final int starRating;
   final List<String> categories;

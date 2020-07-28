@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/screens/movieDetailScreen.dart';
+import 'package:movie_app/screens/reviewScreen.dart';
 import 'package:movie_app/widgets/movieList.dart';
 import 'package:page_transition/page_transition.dart';
 import './screens/authScreen.dart';
@@ -56,6 +57,12 @@ class MyApp extends StatelessWidget {
               type: PageTransitionType.rightToLeftWithFade,
             );
             break;
+          case ReviewScreen.routeName:
+            return PageTransition(
+              child: ReviewScreen(),
+              type: PageTransitionType.rightToLeftWithFade,
+            );
+            break;
           default:
             return null;
         }
@@ -67,7 +74,7 @@ class MyApp extends StatelessWidget {
             return LoadingScreen();
           }
           if (userSnapshot.hasData) {
-            return HomeScreen();
+            return HomeScreen(uid: userSnapshot.data.uid);
           }
           return AuthScreen();
         },

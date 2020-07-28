@@ -1,3 +1,4 @@
+import 'package:animated_button/animated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/screens/movieDetailScreen.dart';
 import 'package:page_transition/page_transition.dart';
@@ -76,20 +77,25 @@ class MovieCard extends StatelessWidget {
                     SizedBox(
                       height: 20,
                     ),
-                    FlatButton.icon(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      color: Color(0xfff2994a),
+                    AnimatedButton(
                       onPressed: () {},
-                      label: Text('Add to Favourites'),
-                      icon: Icon(
-                        Icons.favorite,
-                        color: Colors.red,
+                      color: Color(0xeef2994a),
+                      height: 45,
+                      width: 180,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Icon(
+                            Icons.favorite,
+                            color: Colors.red,
+                          ),
+                          Text('Add ot Watchlist'),
+                        ],
                       ),
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 20,
                     ),
                   ],
                 ),

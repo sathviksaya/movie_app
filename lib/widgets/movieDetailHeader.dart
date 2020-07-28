@@ -107,7 +107,7 @@ class MovieDetailHeader extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           FlatButton.icon(
-                            label: Text('Add to Fav'),
+                            label: Text('Add to Watchlist'),
                             icon: Icon(Icons.favorite_border),
                             onPressed: () {},
                           ),

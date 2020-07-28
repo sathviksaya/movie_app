@@ -1,3 +1,4 @@
+import 'package:animated_button/animated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/MovieListAll.dart';
 import 'package:movie_app/models/movie.dart';
@@ -24,7 +25,7 @@ class _MovieListState extends State<MovieList> {
     super.initState();
   }
 
-  List<Movie> filterMovie(String selectedGenre) {
+  void filterMovie(String selectedGenre) {
     selectedGenreMovies = [];
     for (Movie movie in testMovie) {
       if (movie.categories.contains(selectedGenre)) {
@@ -37,49 +38,38 @@ class _MovieListState extends State<MovieList> {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        SizedBox(
-          height: 10,
-        ),
         Container(
-          height: 36,
+          height: 50,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: widget.genres.length,
             itemBuilder: (ctx, index) {
-              return GestureDetector(
-                onTap: () {
-                  setState(() {
-                    selectedGenre = widget.genres[index];
-                    selectedGenre != 'All'
-                        ? filterMovie(selectedGenre)
-                        : selectedGenreMovies = testMovie;
-                  });
-                },
-                child: Container(
+              return Container(
+                margin: EdgeInsets.all(5),
+                child: AnimatedButton(
                   height: 40,
-                  margin: EdgeInsets.all(5),
-                  child: Chip(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(6),
-                    ),
-                    padding: EdgeInsets.only(top: -5),
-                    backgroundColor: RandomColor().randomColor(
-                        colorBrightness: ColorBrightness.light,
-                        colorSaturation: ColorSaturation.lowSaturation),
-                    label: Text(
-                      widget.genres[index],
-                    ),
+                  width: 80,
+                  color: RandomColor().randomColor(
+                      colorBrightness: ColorBrightness.light,
+                      colorSaturation: ColorSaturation.lowSaturation),
+                  onPressed: () {
+                    setState(() {
+                      selectedGenre = widget.genres[index];
+                      selectedGenre != 'All'
+                          ? filterMovie(selectedGenre)
+                          : selectedGenreMovies = testMovie;
+                    });
+                  },
+                  child: Text(
+                    widget.genres[index],
                   ),
                 ),
               );
             },
           ),
         ),
-        SizedBox(
-          height: 10,
-        ),
         Container(
-          height: 490,
+          height: 495,
           child: ListView.builder(
             itemCount: selectedGenreMovies.length,
             itemBuilder: (ctx, index) {

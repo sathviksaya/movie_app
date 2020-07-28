@@ -1,10 +1,15 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_app/screens/favouritesScreen.dart';
+import 'package:movie_app/screens/profileScreen.dart';
 import 'package:movie_app/widgets/movieList.dart';
 
 class HomeScreen extends StatefulWidget {
   static const routeName = '/homeScreen';
+  final String uid;
+  HomeScreen({this.uid});
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -42,7 +47,9 @@ class _HomeScreenState extends State<HomeScreen> {
       'Adventure',
     ];
     return Scaffold(
+      backgroundColor: Color(0xffd1e8e2),
       appBar: AppBar(
+        backgroundColor: Colors.red[900],
         title: const Text(
           'FlixList',
           style: TextStyle(
@@ -60,14 +67,9 @@ class _HomeScreenState extends State<HomeScreen> {
             MovieList(
               genres: _genres,
             ),
-            Container(
-              color: Colors.red,
-            ),
-            Container(
-              color: Colors.green,
-            ),
-            Container(
-              color: Colors.blue,
+            FavouritesScreen(),
+            ProfileScreen(
+              uid: widget.uid,
             ),
           ],
         ),
@@ -104,18 +106,32 @@ class _HomeScreenState extends State<HomeScreen> {
             textAlign: TextAlign.center,
           ),
           BottomNavyBarItem(
-            icon: Icon(Icons.playlist_add_check),
-            title: Text('Watchlist'),
-            activeColor: Theme.of(context).primaryColor,
-            inactiveColor: Theme.of(context).accentColor,
-            textAlign: TextAlign.center,
-          ),
-          BottomNavyBarItem(
-            icon: Expanded(
-              child: CircleAvatar(
-                backgroundColor: Theme.of(context).accentColor,
-              ),
-            ),
+            icon: StreamBuilder(
+                stream: Firestore.instance
+                    .collection('users')
+                    .document(widget.uid)
+                    .snapshots(),
+                builder: (context, snapshot) {
+                  var doc = snapshot.data.data;
+                  return Expanded(
+                    child: Container(
+                      child: CircleAvatar(
+                        backgroundColor: Colors.black,
+                        maxRadius: 50,
+                        child: ClipOval(
+                          child: SizedBox(
+                            height: 40,
+                            width: 40,
+                            child: Image.network(
+                              doc['urlImage'],
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                }),
             title: Text('Profile'),
             activeColor: Theme.of(context).primaryColor,
             inactiveColor: Theme.of(context).accentColor,

@@ -1,4 +1,4 @@
-
+![](UI_Design/FlixListMockupPoster.jpg)
 
 #App Name: FlixList
 
@@ -6,7 +6,7 @@
 
 **Team Member:**
 
--- Sathvik Saaya
+-- Sathvik Saaya <br>
 -- Vishnu Anand
 
 ### IDEA or Problem Statement:
@@ -34,13 +34,13 @@ Based on the netflix philosophy of colour science, users can instantly relate th
 1) We have implemented a Nav bar which allows the user to seamlesly switch between the full list 
 of suggested movies and the movies that the user had favorited. This nav bar was inspired from
 instagram's UI design.
-
-2)We have placed strategic buttons on the cards that offer movie information so that the user has
+<br>
+2) We have placed strategic buttons on the cards that offer movie information so that the user has
 a very easy access to place the movie in their favorites list or to even write a review.
-
+<br>
 3) In the home screen, there is a small scrollable genre based buttons where the user can easily
 jump to whatver genre the user is in the mood to watch.
-
+<br>
 4) The home screen movie cards give most of the information that a user would need, like the
 movie name, movie poster, it's genres and its IMDB rating. Moreover, on tap the card would lead 
 to a detailed page where full information is provided along with the ratings of other users.
@@ -49,5 +49,5 @@ to a detailed page where full information is provided along with the ratings of 
 
 Language/Framework used: Flutter and Dart.
 
--- YouTube Link :
+-- YouTube Link : <br>
 -- GitHub Link :
